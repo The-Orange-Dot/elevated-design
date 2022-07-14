@@ -27,12 +27,6 @@
   margin-right: auto;
 }
 
-.button {
-  border-radius: 5rem;
-  padding: 10px 30px;
-  margin: 0.5rem;
-}
-
 .address {
   position: absolute;
   bottom: 5%;
@@ -72,13 +66,4 @@
   top: 58vh;
   text-align: center;
   font-weight: 600;
-}
-
-.frontPageText {
-  font-weight: 400;
-  color: "white";
-  text-align: "center";
-  margin: 3rem;
-  letter-spacing: 0.3rem;
-  color: white;
 }

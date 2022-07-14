@@ -70,7 +70,12 @@ export default function Home() {
       <div className={styles.container}>
         <Typography
           variant="h2"
-          className={styles.frontPageText}
+          sx={{
+            fontWeight: 400,
+            color: "white",
+            textAlign: "center",
+            m: 5,
+          }}
           id="main-text"
         >
           Elevate your kitchen outside
