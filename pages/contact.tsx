@@ -5,6 +5,7 @@ import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/Navbar";
 import styles from "../styles/contact.module.css";
 import Image from "next/image";
+import RequestInfoForm from "../components/contact/RequestInfoForm";
 
 const contact = () => {
   return (
@@ -19,7 +20,7 @@ const contact = () => {
         </Typography>
         <Container className={styles.forms_container}>
           <Paper className={styles.request_info_container} elevation={3}>
-            <Typography>request info goes here</Typography>
+            <RequestInfoForm />
           </Paper>
           <Paper className={styles.question_form_container} elevation={3}>
             <Typography>question form goes here</Typography>
