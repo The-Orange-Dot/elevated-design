@@ -37,6 +37,16 @@ const About = () => {
       <Navbar color={"black"} />
       <div className={styles.container}>
         <Box
+          sx={
+            isMobile
+              ? {
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  position: "absolute",
+                }
+              : { width: "90%", display: "flex" }
+          }
           className={isMobile ? styles.mobile_about_image : styles.about_image}
         >
           <Box

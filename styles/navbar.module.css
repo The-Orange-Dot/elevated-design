@@ -11,6 +11,7 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 2%;
 }
 
 .mobileNavbarContainer {
@@ -33,13 +34,14 @@
 .logo {
   font-weight: 400;
   color: black;
+  cursor: pointer;
 }
 
 .navbar_selector {
   display: flex;
   justify-content: space-between;
-  min-width: 50%;
-  max-width: 50%;
+  min-width: 40%;
+  max-width: 40%;
 }
 
 .selector_text_white {

@@ -34,6 +34,7 @@ export default function Home() {
   useEffect(() => {
     gsap.set("#main-text", { opacity: 0 });
     gsap.set("#background-image", { opacity: 0, y: -10 });
+    gsap.set(".button", { opacity: 0 });
 
     if (pageLoaded) {
       gsap.to("#background-image", { opacity: 1, duration: 0.5, y: 0 });
@@ -44,6 +45,7 @@ export default function Home() {
         duration: 1,
         ease: "Power1.out",
       });
+      gsap.to(".button", { opacity: 1, duration: 0.5, delay: 0.5 });
     }
   }, [pageLoaded]);
 
@@ -83,12 +85,14 @@ export default function Home() {
         <Button
           variant="contained"
           sx={{ borderRadius: "5rem", p: "10px 30px", m: 0.5 }}
+          className="button"
         >
           <Typography variant="button">Inquire</Typography>
         </Button>
         <Button
           variant="contained"
           sx={{ borderRadius: "5rem", p: "10px 30px", m: 0.5 }}
+          className="button"
         >
           <Typography variant="button">Gallery</Typography>
         </Button>
@@ -104,7 +108,16 @@ export default function Home() {
           id="background-image"
         />
         <div className={styles.background_color} />
-        <Typography className={styles.address} variant="overline">
+        <Typography
+          sx={{
+            position: "absolute",
+            bottom: "5%",
+            color: "white",
+            fontSize: "1rem",
+            fontWeight: 200,
+          }}
+          variant="overline"
+        >
           East Hampton, NY 11937
         </Typography>
       </div>
