@@ -6,8 +6,7 @@ import {
   CircularProgress,
   Box,
 } from "@mui/material";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Footer from "../components/footer/Footer";
@@ -75,7 +74,7 @@ export default function Home() {
       <Container className={styles.container}>
         <Typography
           variant="h2"
-          className={styles.front_page_text}
+          className={styles.frontPageText}
           id="main-text"
         >
           Elevate your kitchen outside
