@@ -1,0 +1,64 @@
+.navbar_container {
+  position: fixed;
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  left: 0%;
+  right: 0%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mobile_navbar_container {
+  position: fixed;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  left: 0%;
+  right: 0%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo_white {
+  color: white;
+  font-weight: 400;
+}
+
+.logo {
+  font-weight: 400;
+  color: black;
+}
+
+.navbar_selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selector_text_white {
+  color: white;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.selector_text {
+  font-weight: 400;
+  cursor: pointer;
+  color: black;
+}
+
+.mobile_nav_button {
+  color: black;
+  font-size: 40px;
+}
+
+.mobile_nav_button_white {
+  color: white;
+  font-size: 40px;
+}
