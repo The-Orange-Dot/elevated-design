@@ -30,7 +30,11 @@ const Navbar = ({ color }) => {
       },
     });
 
-    if (query.pathname === "/" || query.pathname === "/contact") {
+    if (
+      query.pathname === "/" ||
+      query.pathname === "/contact" ||
+      query.pathname === "/gallery"
+    ) {
       tl.fromTo(
         "#container",
         {
@@ -47,12 +51,7 @@ const Navbar = ({ color }) => {
   return (
     <Container
       className={
-        isMobile ? styles.mobile_navbar_container : styles.navbar_container
-      }
-      sx={
-        query.pathname === "/" || query.pathname === "/contact"
-          ? null
-          : { backgroundColor: "white", zIndex: 100 }
+        isMobile ? styles.mobileNavbarContainer : styles.navbarContainer
       }
       id={"container"}
     >
