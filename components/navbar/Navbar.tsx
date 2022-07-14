@@ -57,7 +57,7 @@ const Navbar = ({ color }) => {
       }
       id={"container"}
     >
-      <Container sx={isMobile ? null : { flex: 0.5 }}>
+      <Container>
         <Link href="/">
           <Typography
             className={textColor === "white" ? styles.logo_white : styles.logo}
@@ -70,7 +70,7 @@ const Navbar = ({ color }) => {
       {isMobile ? (
         <MobileNavMenu color={textColor} />
       ) : (
-        <Container sx={{ flex: 0.5 }} className={styles.navbar_selector}>
+        <Container className={styles.navbar_selector}>
           <Link href="/">
             <Typography
               className={

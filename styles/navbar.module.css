@@ -6,10 +6,8 @@
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  left: 0%;
-  right: 0%;
-  margin-left: auto;
-  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .mobile_navbar_container {
@@ -39,6 +37,8 @@
 .navbar_selector {
   display: flex;
   justify-content: space-between;
+  min-width: 50%;
+  max-width: 50%;
 }
 
 .selector_text_white {
