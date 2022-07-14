@@ -1,10 +1,3 @@
-import {
-  Typography,
-  Container,
-  Backdrop,
-  CircularProgress,
-  Box,
-} from "@mui/material";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -12,6 +5,9 @@ import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/Navbar";
 import gsap from "gsap";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import CircularProgress from "@mui/material/CircularProgress";
+import Backdrop from "@mui/material/Backdrop";
 
 export default function Home() {
   const [pageLoaded, setPageLoaded] = useState(false);
@@ -54,7 +50,7 @@ export default function Home() {
   return (
     <>
       {pageLoaded ? null : (
-        <Box className={styles.loading}>
+        <div className={styles.loading}>
           <Backdrop sx={{ color: "#000" }} open>
             <CircularProgress
               variant="determinate"
@@ -67,11 +63,11 @@ export default function Home() {
           <Typography variant="h4" className={styles.loading_text}>
             We&apos;ll get cookin&apos; in a sec
           </Typography>
-          <Box className={styles.loading_background} />
-        </Box>
+          <div className={styles.loading_background} />
+        </div>
       )}
       <Navbar color={"white"} />
-      <Container className={styles.container}>
+      <div className={styles.container}>
         <Typography
           variant="h2"
           className={styles.frontPageText}
@@ -96,11 +92,11 @@ export default function Home() {
           }
           id="background-image"
         />
-        <Box className={styles.background_color} />
+        <div className={styles.background_color} />
         <Typography className={styles.address} variant="overline">
           East Hampton, NY 11937
         </Typography>
-      </Container>
+      </div>
       <Footer />
     </>
   );

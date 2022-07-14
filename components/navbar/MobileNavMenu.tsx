@@ -25,7 +25,7 @@ export default function AccountMenu({ color }) {
     setAnchorEl(null);
   };
   return (
-    <React.Fragment>
+    <>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title="Account settings">
           <IconButton
@@ -94,6 +94,6 @@ export default function AccountMenu({ color }) {
           <MenuItem>Contact</MenuItem>
         </Link>
       </Menu>
-    </React.Fragment>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import { Typography, Container, Box } from "@mui/material";
+import { Typography, Container } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/navbar.module.css";
 import { useMediaQuery } from "@mui/material";
@@ -49,13 +49,13 @@ const Navbar = ({ color }) => {
   }, [isMobile, query]);
 
   return (
-    <Container
+    <div
       className={
         isMobile ? styles.mobileNavbarContainer : styles.navbarContainer
       }
       id={"container"}
     >
-      <Container>
+      <div>
         <Link href="/">
           <Typography
             className={textColor === "white" ? styles.logo_white : styles.logo}
@@ -64,11 +64,11 @@ const Navbar = ({ color }) => {
             Elevated Design
           </Typography>
         </Link>
-      </Container>
+      </div>
       {isMobile ? (
         <MobileNavMenu color={textColor} />
       ) : (
-        <Container className={styles.navbar_selector}>
+        <div className={styles.navbar_selector}>
           <Link href="/">
             <Typography
               className={
@@ -117,9 +117,9 @@ const Navbar = ({ color }) => {
               Inquire Now
             </Typography>
           </Link>
-        </Container>
+        </div>
       )}
-    </Container>
+    </div>
   );
 };
 

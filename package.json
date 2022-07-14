@@ -9,18 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@material-ui/core": "^4.12.4",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/material": "^5.9.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.3",
+    "@mui/material": "^5.8.3",
     "@reduxjs/toolkit": "^1.8.3",
-    "gsap": "npm:@gsap/member@^3.10.4",
+    "gsap": "file:gsap-bonus.tgz",
     "next": "12.2.2",
     "next-auth": "^4.10.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-jss": "^10.9.0",
     "react-redux": "^8.0.2",
     "styled-components": "^5.3.5"
   },

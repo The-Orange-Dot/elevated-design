@@ -11,28 +11,28 @@ const contact = () => {
   return (
     <>
       <Navbar color="white" />
-      <Container className={styles.container}>
+      <div className={styles.container}>
         <Typography
           sx={{ mb: 20, fontWeight: 400, color: "white" }}
           variant="h3"
         >
           Got questions? We&apos;ve got answers!
         </Typography>
-        <Container className={styles.forms_container}>
+        <div className={styles.forms_container}>
           <Paper className={styles.request_info_container} elevation={3}>
             <RequestInfoForm />
           </Paper>
           <Paper className={styles.question_form_container} elevation={3}>
             <Typography>question form goes here</Typography>
           </Paper>
-        </Container>
+        </div>
         <Image
           src="/images/contact_image.jpeg"
           alt="Good ol' grilling"
           layout="fill"
           className={styles.contact_background_image}
         />
-      </Container>
+      </div>
 
       <Footer />
     </>

@@ -18,7 +18,7 @@ const Footer = () => {
   const isMobile = useMediaQuery("(max-width: 900px)");
 
   return (
-    <Container
+    <div
       className={
         isMobile ? styles.mobile_footer_container : styles.footer_container
       }
@@ -103,7 +103,7 @@ const Footer = () => {
           </Link>
         </Grid>
       </Grid>
-    </Container>
+    </div>
   );
 };
 

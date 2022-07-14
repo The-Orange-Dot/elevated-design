@@ -35,7 +35,7 @@ const About = () => {
   return (
     <>
       <Navbar color={"black"} />
-      <Container className={styles.container}>
+      <div className={styles.container}>
         <Box
           className={isMobile ? styles.mobile_about_image : styles.about_image}
         >
@@ -85,7 +85,7 @@ const About = () => {
         <Box sx={{ mt: 30 }}>
           <Typography>Blah Blah Blah, more info down here</Typography>
         </Box>
-      </Container>
+      </div>
       {/* <Typography>Sharing is caring</Typography> */}
       {/* <Typography>Get some fresh air. You deserve it</Typography> */}
       <Footer />
