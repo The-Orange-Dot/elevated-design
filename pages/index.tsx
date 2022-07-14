@@ -63,7 +63,7 @@ export default function Home() {
             />
           </Backdrop>
           <Typography variant="h4" className={styles.loading_text}>
-            We&apos;ll get cookin&apos; in a sec!
+            We&apos;ll get cookin&apos; in a sec
           </Typography>
           <div className={styles.loading_background} />
         </div>
