@@ -75,10 +75,16 @@ export default function Home() {
         >
           Elevate your kitchen outside
         </Typography>
-        <Button variant="contained" className={styles.button}>
+        <Button
+          variant="contained"
+          sx={{ borderRadius: "5rem", p: "10px 30px", m: 0.5 }}
+        >
           <Typography variant="button">Inquire</Typography>
         </Button>
-        <Button variant="contained" className={styles.button}>
+        <Button
+          variant="contained"
+          sx={{ borderRadius: "5rem", p: "10px 30px", m: 0.5 }}
+        >
           <Typography variant="button">Gallery</Typography>
         </Button>
         <Image
