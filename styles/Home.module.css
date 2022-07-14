@@ -1,5 +1,12 @@
 .container {
-  padding: 0 2rem;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .background_image {
@@ -55,8 +62,6 @@
   height: 100%;
   left: 0%;
   right: 0%;
-  top: 58%;
-  margin-left: auto;
-  margin-right: auto;
+  top: 58vh;
   text-align: center;
 }

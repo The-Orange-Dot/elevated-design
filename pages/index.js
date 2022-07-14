@@ -77,7 +77,7 @@ export default function Home() {
         </Box>
       )}
       <Navbar color={"white"} />
-      <Container className="main">
+      <Container className={styles.container}>
         <Typography
           variant="h2"
           sx={{
