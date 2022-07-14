@@ -5,8 +5,9 @@ import {
   InputBase,
   Divider,
   Grid,
+  Box,
+  Container,
 } from "@mui/material";
-import { Box, Container } from "@mui/system";
 import React from "react";
 import styles from "../../styles/footer.module.css";
 import EmailIcon from "@mui/icons-material/Email";

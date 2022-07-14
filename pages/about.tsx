@@ -1,5 +1,4 @@
-import { Typography, Paper } from "@mui/material";
-import { Container, Box } from "@mui/system";
+import { Typography, Paper, Container, Box } from "@mui/material";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Footer from "../components/footer/Footer";

@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/contact.module.css";
-import { Paper, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Paper, Typography, Box } from "@mui/material";
 
 const RequestInfoForm = () => {
   return (
