@@ -11,7 +11,7 @@ const contact = () => {
   return (
     <>
       <Navbar color="white" />
-      <Container className="main">
+      <Container className={styles.container}>
         <Typography
           sx={{ mb: 20, fontWeight: 400, color: "white" }}
           variant="h3"

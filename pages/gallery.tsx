@@ -9,7 +9,7 @@ const gallery = () => {
   return (
     <>
       <Navbar color={"black"} />
-      <Paper className="main" elevation={0}>
+      <Paper className={styles.container} elevation={0}>
         <ImageGallery />
       </Paper>
       <Footer />
