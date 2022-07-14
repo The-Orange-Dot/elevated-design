@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <>
-      {pageLoaded ? null : (
+      {/* {pageLoaded ? null : (
         <Box className={styles.loading}>
           <Backdrop sx={{ color: "#000" }} open>
             <CircularProgress
@@ -69,7 +69,7 @@ export default function Home() {
           </Typography>
           <Box className={styles.loading_background} />
         </Box>
-      )}
+      )} */}
       <Navbar color={"white"} />
       <Container className={styles.container}>
         <Typography
