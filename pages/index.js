@@ -1,7 +1,6 @@
 import {
   Typography,
   Container,
-  Button,
   Backdrop,
   CircularProgress,
   Box,
@@ -12,6 +11,7 @@ import styles from "../styles/Home.module.css";
 import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/Navbar";
 import gsap from "gsap";
+import Button from "@mui/material/Button";
 
 export default function Home() {
   const [pageLoaded, setPageLoaded] = useState(false);
@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <>
-      {/* {pageLoaded ? null : (
+      {pageLoaded ? null : (
         <Box className={styles.loading}>
           <Backdrop sx={{ color: "#000" }} open>
             <CircularProgress
@@ -69,7 +69,7 @@ export default function Home() {
           </Typography>
           <Box className={styles.loading_background} />
         </Box>
-      )} */}
+      )}
       <Navbar color={"white"} />
       <Container className={styles.container}>
         <Typography
