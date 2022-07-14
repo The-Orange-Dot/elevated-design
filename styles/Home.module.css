@@ -27,6 +27,7 @@
 .button {
   border-radius: 5rem;
   padding: 10px 30px;
+  margin: 0.5rem;
 }
 
 .address {
@@ -63,4 +64,14 @@
   right: 0%;
   top: 58vh;
   text-align: center;
+  font-weight: 600;
+}
+
+.front_page_text {
+  font-weight: 400;
+  color: "white";
+  text-align: "center";
+  margin: 3rem;
+  letter-spacing: 0.3rem;
+  color: white;
 }

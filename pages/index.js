@@ -57,7 +57,7 @@ export default function Home() {
     <>
       {pageLoaded ? null : (
         <Box className={styles.loading}>
-          <Backdrop className="main" sx={{ color: "#000" }} open>
+          <Backdrop sx={{ color: "#000" }} open>
             <CircularProgress
               variant="determinate"
               color="primary"
@@ -66,11 +66,7 @@ export default function Home() {
               thickness={5}
             />
           </Backdrop>
-          <Typography
-            sx={{ fontWeight: 600 }}
-            variant="h4"
-            className={styles.loading_text}
-          >
+          <Typography variant="h4" className={styles.loading_text}>
             We&apos;ll get cookin&apos; in a sec
           </Typography>
           <Box className={styles.loading_background} />
@@ -80,21 +76,15 @@ export default function Home() {
       <Container className={styles.container}>
         <Typography
           variant="h2"
-          sx={{
-            fontWeight: "400",
-            color: "white",
-            textAlign: "center",
-            m: 5,
-            letterSpacing: 2,
-          }}
+          className={styles.front_page_text}
           id="main-text"
         >
           Elevate your kitchen outside
         </Typography>
-        <Button variant="contained" className={styles.button} sx={{ m: 1 }}>
+        <Button variant="contained" className={styles.button}>
           <Typography variant="button">Inquire</Typography>
         </Button>
-        <Button variant="contained" className={styles.button} sx={{ m: 1 }}>
+        <Button variant="contained" className={styles.button}>
           <Typography variant="button">Gallery</Typography>
         </Button>
         <Image
