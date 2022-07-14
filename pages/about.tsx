@@ -36,17 +36,16 @@ const About = () => {
   return (
     <>
       <Navbar color={"black"} />
-      <Container className="main" style={{ padding: 0 }}>
+      <Container className={styles.container}>
         <Box
           className={isMobile ? styles.mobile_about_image : styles.about_image}
         >
           <Box
             id="image-1-text"
-            className={styles.about_text_container}
-            sx={
+            className={
               isMobile
-                ? { position: "absolute", zIndex: 1, color: "white" }
-                : { flex: 1, opacity: 0 }
+                ? styles.mobile_about_text_container
+                : styles.about_text_container
             }
           >
             <Typography
@@ -70,7 +69,6 @@ const About = () => {
             className={styles.more_outside_image}
             elevation={5}
             id="image-1"
-            sx={{ opacity: 0 }}
           >
             <Image
               src="/images/cooking_outside.jpg"

@@ -18,7 +18,7 @@ const Navbar = ({ color }) => {
   useEffect(() => {
     let tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".main",
+        trigger: "#container",
         start: "top -5vh",
         end: "+=1",
         scrub: 1,
