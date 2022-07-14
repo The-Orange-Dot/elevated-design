@@ -40,4 +40,12 @@
   display: flex;
   flex-direction: column;
   margin: 0 10px;
+  flex: 0.7;
+}
+
+.footer_form {
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  width: 300px;
 }

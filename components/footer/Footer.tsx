@@ -23,7 +23,7 @@ const Footer = () => {
         isMobile ? styles.mobile_footer_container : styles.footer_container
       }
     >
-      <Box sx={{ flex: 0.7 }} className={styles.footer_contact}>
+      <Box className={styles.footer_contact}>
         <Typography variant="body1" sx={{ fontWeight: "bolder" }}>
           Request Info
         </Typography>
@@ -33,31 +33,19 @@ const Footer = () => {
         <Typography variant="caption" sx={{ color: "gray" }}>
           Enter your email:
         </Typography>
-        <Paper
-          component="form"
-          sx={{
-            p: "2px 4px",
-            display: "flex",
-            alignItems: "center",
-            width: 300,
-          }}
-        >
+        <Paper component="form" className={styles.footer_form}>
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             placeholder="example@email.com"
             inputProps={{ "aria-label": "search google maps" }}
           />
-
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton
-            color="primary"
-            sx={{ p: "10px" }}
-            aria-label="directions"
-          >
+          <IconButton color="primary" aria-label="directions">
             <EmailIcon />
           </IconButton>
         </Paper>
       </Box>
+
       <Grid
         sx={{ flex: 1 }}
         className={isMobile ? styles.mobile_footer_nav : styles.footer_nav}
