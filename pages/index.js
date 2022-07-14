@@ -2,11 +2,10 @@ import {
   Typography,
   Container,
   Button,
-  Pagination,
   Backdrop,
   CircularProgress,
+  Box,
 } from "@mui/material";
-import { Box, style } from "@mui/system";
 import { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
