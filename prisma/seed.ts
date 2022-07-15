@@ -1,4 +1,4 @@
-import { PrismaClient, Staff } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 
 const client = new PrismaClient();
@@ -31,31 +31,31 @@ interface StaffData {
 const seed = async () => {
   for (let i = 0; i < 10; i++) {
     const customer: CustomerData = {
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      email: faker.internet.exampleEmail(),
-      username: faker.internet.userName(),
+      firstName: faker.name.firstName().toLowerCase(),
+      lastName: faker.name.lastName().toLowerCase(),
+      email: faker.internet.exampleEmail().toLowerCase(),
+      username: faker.internet.userName().toLowerCase(),
       password: "password",
       phoneNumber: faker.phone.number(),
       zipcode: faker.address.zipCode(),
-      city: faker.address.city(),
+      city: faker.address.city().toLowerCase(),
       dob: faker.date.birthdate(),
-      address: faker.address.streetAddress(),
+      address: faker.address.streetAddress().toLowerCase(),
     };
     await client.customer.create({ data: customer });
   }
 
   await client.staff.create({
     data: <StaffData>{
-      firstName: "Thomas",
-      lastName: "Le",
-      username: "thomasTest",
+      firstName: "hung",
+      lastName: "le",
+      username: "hungtestaccount",
       password: "password",
-      address: faker.address.streetAddress(),
+      address: faker.address.streetAddress().toLowerCase(),
       phoneNumber: faker.phone.number(),
       dob: faker.date.birthdate(),
       active: true,
-      email: faker.internet.exampleEmail(),
+      email: faker.internet.exampleEmail().toLowerCase(),
     },
   });
 };

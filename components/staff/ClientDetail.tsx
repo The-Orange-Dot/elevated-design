@@ -1,0 +1,121 @@
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import React, { useEffect, useState } from "react";
+import styles from "../../styles/staff/ClientDetail.module.css";
+import { server } from "../../config/index";
+import HomeIcon from "@mui/icons-material/Home";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import AddIcon from "@mui/icons-material/Add";
+import PaymentIcon from "@mui/icons-material/Payment";
+import { TextField } from "@mui/material";
+
+const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
+  const [emailButton, setEmailButton] = useState(true);
+  const [paymentButton, setPaymentButton] = useState(true);
+
+  return (
+    <Paper sx={{ width: "99%", height: "60%", m: 1 }}>
+      <TableContainer
+        component={Paper}
+        variant="outlined"
+        square
+        sx={{
+          overflow: "scroll",
+          width: "100%",
+          height: "90%",
+          pb: 1,
+        }}
+      >
+        <Table size="small" aria-label="a dense table">
+          <TableHead sx={{ backgroundColor: "lightBlue" }}>
+            <TableRow>
+              <TableCell align="left">
+                <AccountBoxIcon />
+              </TableCell>
+              <TableCell align="center">
+                <EmailIcon />
+              </TableCell>
+              <TableCell align="center">
+                <PhoneIcon />
+              </TableCell>
+              <TableCell align="right">
+                <HomeIcon />
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody sx={{ mt: 1, mb: 1 }}>
+            {clients.length
+              ? clients.map((client) => {
+                  return (
+                    <TableRow
+                      key={`${client.lastName}_${client.firstName}`}
+                      sx={{
+                        cursor: "pointer",
+                        height: 70,
+                        "&:last-child td, &:last-child th": {
+                          border: 0,
+                          mb: 1,
+                        },
+                        "&:hover": { backgroundColor: "#dfdfdf" },
+                      }}
+                      onClick={() => setSelectedClient(client)}
+                    >
+                      <TableCell component="th" scope="row">
+                        {`${client.lastName
+                          .slice(0, 1)
+                          .toUpperCase()}${client.lastName.slice(
+                          1
+                        )}, ${client.firstName
+                          .slice(0, 1)
+                          .toUpperCase()}${client.firstName.slice(1)}`}
+                      </TableCell>
+                      <TableCell align="center">{client.email}</TableCell>
+                      <TableCell align="center">{client.phoneNumber}</TableCell>
+                      <TableCell align="right">{`${client.address}, ${client.zipcode}`}</TableCell>
+                    </TableRow>
+                  );
+                })
+              : null}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <Paper
+        elevation={0}
+        square
+        sx={{
+          width: "100%",
+          height: "10%",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        <ButtonGroup variant="contained" sx={{ height: "90%" }}>
+          <Button sx={{ width: 100 }}>
+            <AddIcon />
+          </Button>
+          <Button disabled={emailButton} sx={{ width: 100 }}>
+            <EmailIcon />
+          </Button>
+          <Button disabled={paymentButton} sx={{ width: 100 }}>
+            <PaymentIcon />
+          </Button>
+        </ButtonGroup>
+
+        <TextField size="small" label="Search" />
+      </Paper>
+    </Paper>
+  );
+};
+
+export default ClientDetail;

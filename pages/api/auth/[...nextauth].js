@@ -1,26 +1,60 @@
 import NextAuth from "next-auth";
-import EmailProvider from "next-auth/providers/email";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+import { server } from "../../../config";
+
+const prisma = new PrismaClient();
 
 export default NextAuth({
   // Configure one or more authentication providers
+  secret: process.env.AUTH_SECRET,
   providers: [
-    EmailProvider({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM,
-      maxAge: 24 * 3, // email is valid for 3 days
-      //from: "no-reply@example.com" //This can be the business email
+    CredentialsProvider({
+      name: "Credentials",
+      id: "login",
+      credentials: {
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        const staff = await prisma.staff.findFirst({
+          where: { username: credentials.username },
+        });
+        if (staff.password === credentials.password) {
+          return staff;
+        }
+
+        return null;
+      },
     }),
     // ...add more providers here
   ],
-  pages: {
-    signIn: "/auth/signin",
-    newUser: "/auth/new-user", // New users will be directed here on first sign in (leave the property out if not of interest)
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
   },
-  async redirect({ url, baseUrl }) {
-    // Allows relative callback URLs
-    if (url.startsWith("/")) return `${baseUrl}${url}`;
-    // Allows callback URLs on the same origin
-    else if (new URL(url).origin === baseUrl) return url;
-    return baseUrl;
+  jwt: {
+    maxAge: 30 * 24 * 60 * 60,
+  },
+
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = user;
+      }
+
+      return token;
+    },
+    async session({ session, token }) {
+      session.user = {
+        firstName: token.user.firstName,
+        lastName: token.user.lastName,
+        email: token.user.email,
+        address: token.user.address,
+        phoneNumber: token.user.phoneNumber,
+      };
+      return session;
+    },
   },
 });
