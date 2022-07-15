@@ -40,14 +40,18 @@ const About = () => {
           sx={
             isMobile
               ? {
-                  width: "100%",
+                  width: "95vw",
                   display: "flex",
                   flexDirection: "column",
                   position: "absolute",
+                  overflow: "hidden",
                 }
-              : { width: "90%", display: "flex" }
+              : {
+                  width: "90%",
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                }
           }
-          className={isMobile ? styles.mobile_about_image : styles.about_image}
         >
           <Box
             id="image-1-text"
@@ -75,7 +79,13 @@ const About = () => {
             </Typography>
           </Box>
           <Paper
-            className={styles.more_outside_image}
+            sx={{
+              width: 800,
+              height: 450,
+              overflow: "hidden",
+              borderRadius: "1rem",
+              zIndex: "-1",
+            }}
             elevation={5}
             id="image-1"
           >
@@ -83,7 +93,7 @@ const About = () => {
               src="/images/cooking_outside.jpg"
               alt="Cook outside"
               width={800}
-              height={500}
+              height={isMobile ? 550 : 450}
               className={isMobile ? styles.mobile_image : null}
               placeholder="blur"
               blurDataURL="/images/cooking_outside.jpg"
@@ -92,7 +102,7 @@ const About = () => {
           </Paper>
         </Box>
 
-        <Box sx={{ mt: 30 }}>
+        <Box>
           <Typography>Blah Blah Blah, more info down here</Typography>
         </Box>
       </div>

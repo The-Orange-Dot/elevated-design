@@ -31,6 +31,8 @@ const contact = () => {
           alt="Good ol' grilling"
           layout="fill"
           className={styles.contact_background_image}
+          placeholder="blur"
+          blurDataURL="/images/contact_image.jpeg"
         />
       </div>
 

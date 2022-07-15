@@ -18,7 +18,7 @@ const Navbar = ({ color }) => {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#container",
-        start: "top -5vh",
+        start: "top -5px",
         end: "+=1",
         scrub: 1,
         onEnter: () => setTextColor("black"),
@@ -30,22 +30,16 @@ const Navbar = ({ color }) => {
       },
     });
 
-    if (
-      query.pathname === "/" ||
-      query.pathname === "/contact" ||
-      query.pathname === "/gallery"
-    ) {
-      tl.fromTo(
-        "#container",
-        {
-          backgroundColor: "none",
-        },
-        {
-          backgroundColor: "white",
-          zIndex: 100,
-        }
-      );
-    }
+    tl.fromTo(
+      "#container",
+      {
+        backgroundColor: "none",
+      },
+      {
+        backgroundColor: "white",
+        zIndex: 100,
+      }
+    );
   }, [isMobile, query]);
 
   return (

@@ -14,21 +14,7 @@
   height: 450px;
   border-radius: 1rem;
   overflow: hidden;
-  z-index: 0;
   opacity: 0;
-}
-
-.about_image {
-  width: 90%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.mobile_about_image {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  overflow: hidden;
 }
 
 .mobile_image {
@@ -41,6 +27,8 @@
   padding: 0 10px;
   flex: 1;
   opacity: 0;
+  text-align: center;
+  justify-content: center;
 }
 
 .mobile_about_text_container {
@@ -48,6 +36,5 @@
   flex-direction: column;
   padding: 0 10px;
   position: absolute;
-  z-index: 1;
   color: white;
 }

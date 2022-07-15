@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Staff {
+  id String @default(cuid()) @id
+  firstName String @map(name: "first_name")
+  lastName String @map(name: "last_name")
+  username String
+  password String
+  address String
+  phoneNumber String @map(name: "phone_number")
+  dob DateTime
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  active Boolean @default(true)
+  email String
+  invoiceSentBy Payment[]
+}
+
+model Customer {
+  id String @default(cuid()) @id
+  firstName String @map(name: "first_name")
+  lastName String @map(name: "last_name")
+  username String
+  password String
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  phoneNumber String @map(name: "phone_number")
+  dob DateTime
+  address String
+  city String
+  zipcode String 
+  email String
+  notes String @default("")
+  payment Payment[]
+}
+
+model Payment {
+  id String @default(cuid()) @id
+  customer Customer @relation(fields: [customerId], references: [id] )
+  customerId String
+  staff Staff @relation(fields: [staffId], references: [id] )
+  staffId String
+  invoiceSent Boolean @default(true)
+  paid Boolean @default(false)
+}

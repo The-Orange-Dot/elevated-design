@@ -37,10 +37,10 @@ export default function AccountMenu({ color }) {
             aria-expanded={open ? "true" : undefined}
           >
             <MenuIcon
-              className={
+              sx={
                 color === "white"
-                  ? styles.mobile_nav_button_white
-                  : styles.mobile_nav_button
+                  ? { color: "white", fontSize: 40 }
+                  : { color: "black", fontSize: 40 }
               }
             />
           </IconButton>
@@ -91,7 +91,7 @@ export default function AccountMenu({ color }) {
           <MenuItem>About Us</MenuItem>
         </Link>
         <Link href="/contact">
-          <MenuItem>Contact</MenuItem>
+          <MenuItem>Inquire now</MenuItem>
         </Link>
       </Menu>
     </>
