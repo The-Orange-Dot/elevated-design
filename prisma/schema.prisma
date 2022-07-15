@@ -52,4 +52,17 @@ model Payment {
   staffId String
   invoiceSent Boolean @default(true)
   paid Boolean @default(false)
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+}
+
+model Inquery {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  email String
+  name String
+  pronoun String? @default("")
+  budget Int?
+  answered Boolean @default(false)
 }
