@@ -1,7 +1,8 @@
 import { Box, TextField, Stack, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { numberWithCommas } from "../numberWithCommas";
-const QuestionForm = () => {
+
+const QuestionForm = ({ isMobile }) => {
   const [disabledSubmit, setDisabledSubmit] = useState(true);
   const [emailInput, setEmailInput] = useState("");
   const [nameInput, setNameInput] = useState("");
@@ -44,23 +45,43 @@ const QuestionForm = () => {
 
   return (
     <Box
-      sx={{
-        width: "100%",
-        height: "100%",
-        zIndex: 1,
-        display: "flex",
-        p: 3,
-      }}
+      sx={
+        isMobile
+          ? {
+              width: "100%",
+              height: "100%",
+              zIndex: 1,
+              display: "flex",
+              justifyContent: "center",
+              p: 3,
+              flexDirection: "column",
+            }
+          : {
+              width: "100%",
+              height: "100%",
+              zIndex: 1,
+              display: "flex",
+              p: 3,
+            }
+      }
     >
       <Stack
         component="form"
-        sx={{
-          width: "30%",
-          height: "90%",
-          display: "flex",
-
-          justifyContent: "space-between",
-        }}
+        sx={
+          isMobile
+            ? {
+                width: "100%",
+                height: "50%",
+                display: "flex",
+                justifyContent: "space-between",
+              }
+            : {
+                width: "30%",
+                height: "90%",
+                display: "flex",
+                justifyContent: "space-between",
+              }
+        }
         spacing={2}
         noValidate
         autoComplete="off"
@@ -70,16 +91,34 @@ const QuestionForm = () => {
           variant="standard"
           label="Email*"
           value={emailInput}
-          onChange={(e) => setEmailInput(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length < 50) {
+              setEmailInput(e.target.value);
+            }
+          }}
         />
         <TextField
           size="small"
           variant="standard"
           label="Name*"
           value={nameInput}
-          onChange={(e) => setNameInput(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length < 25) {
+              setNameInput(e.target.value);
+            }
+          }}
         />
-        <TextField size="small" variant="standard" label="Pronoun" />
+        <TextField
+          size="small"
+          variant="standard"
+          label="Pronoun"
+          value={pronounInput}
+          onChange={(e) => {
+            if (e.target.value.length < 8) {
+              setPronounInput(e.target.value);
+            }
+          }}
+        />
         <TextField
           size="small"
           variant="standard"
@@ -100,13 +139,22 @@ const QuestionForm = () => {
       </Stack>
 
       <Box
-        sx={{
-          ml: 3,
-          width: "70%",
-          height: "95%",
-          display: "flex",
-          alignItems: "center",
-        }}
+        sx={
+          isMobile
+            ? {
+                width: "100%",
+                height: "95%",
+                display: "flex",
+                alignItems: "center",
+              }
+            : {
+                ml: 3,
+                width: "70%",
+                height: "95%",
+                display: "flex",
+                alignItems: "center",
+              }
+        }
       >
         <TextField
           size="small"
@@ -116,7 +164,7 @@ const QuestionForm = () => {
           rows={14}
           value={textInput}
           onChange={(e) => setTextInput(e.target.value)}
-          label="Your question goes here!"
+          label="Send us a message and we'll get back to you ASAP!"
         />
       </Box>
     </Box>

@@ -7,52 +7,98 @@ import styles from "../styles/contact.module.css";
 import Image from "next/image";
 import RequestInfoForm from "../components/contact/RequestInfoForm";
 import QuestionForm from "../components/contact/QuestionForm";
+import { useMediaQuery } from "@mui/material";
 
-const contact = () => {
+const Contact = () => {
+  const isMobile = useMediaQuery("(max-width: 900px)");
+
   return (
     <>
       <Navbar color="white" />
-      <div className={styles.container}>
+      <div className={isMobile ? styles.mobile_container : styles.container}>
         <Typography
-          sx={{ mb: 5, fontWeight: 400, color: "white" }}
+          sx={
+            isMobile
+              ? { mb: 5, fontWeight: 400, color: "white", textAlign: "center" }
+              : { mb: 5, fontWeight: 400, color: "white" }
+          }
           variant="h3"
         >
           Got questions? We&apos;ve got answers!
         </Typography>
-        <div className={styles.forms_container}>
+        <div
+          className={
+            isMobile ? styles.mobile_forms_container : styles.forms_container
+          }
+        >
           <Paper
-            sx={{
-              display: "flex",
-              justifyContent: "space-around",
-              width: "30%",
-              height: "40vh",
-              backgroundColor: "rgba(255, 255, 255, .9)",
-            }}
+            sx={
+              isMobile
+                ? {
+                    display: "flex",
+                    justifyContent: "space-around",
+                    width: "100%",
+                    height: "40vh",
+                    backgroundColor: "rgba(255, 255, 255, .9)",
+                    mb: 1,
+                  }
+                : {
+                    display: "flex",
+                    justifyContent: "space-around",
+                    width: "30%",
+                    height: "40vh",
+                    backgroundColor: "rgba(255, 255, 255, .9)",
+                  }
+            }
             elevation={3}
           >
-            <RequestInfoForm />
+            <RequestInfoForm isMobile={isMobile} />
           </Paper>
           <Paper
-            sx={{
-              display: "flex",
-              justifyContent: "space-around",
-              width: "65%",
-              height: "40vh",
-              backgroundColor: "rgba(255, 255, 255, .9)",
-            }}
+            sx={
+              isMobile
+                ? {
+                    display: "flex",
+                    width: "100%",
+                    height: "90vh",
+                    backgroundColor: "rgba(255, 255, 255, .9)",
+                  }
+                : {
+                    display: "flex",
+                    justifyContent: "space-around",
+                    width: "65%",
+                    height: "40vh",
+                    backgroundColor: "rgba(255, 255, 255, .9)",
+                  }
+            }
             elevation={3}
           >
-            <QuestionForm />
+            <QuestionForm isMobile={isMobile} />
           </Paper>
         </div>
-        <Image
-          src="/images/contact_image.jpeg"
-          alt="Good ol' grilling"
-          layout="fill"
-          className={styles.contact_background_image}
-          placeholder="blur"
-          blurDataURL="/images/contact_image.jpeg"
-        />
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: -1,
+          }}
+        >
+          <Image
+            src="/images/contact_image.jpeg"
+            alt="Good ol' grilling"
+            layout="fill"
+            className={
+              isMobile
+                ? styles.mobile_contact_background_image
+                : styles.contact_background_image
+            }
+            placeholder="blur"
+            blurDataURL="/images/contact_image.jpeg"
+          />
+        </div>
       </div>
 
       <Footer />
@@ -60,4 +106,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;
