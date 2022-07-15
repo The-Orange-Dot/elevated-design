@@ -55,8 +55,23 @@ const Footer = () => {
       </Box>
 
       <Grid
-        sx={{ flex: 1 }}
-        className={isMobile ? styles.mobile_footer_nav : styles.footer_nav}
+        sx={
+          isMobile
+            ? {
+                m: "10px 0",
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                minWidth: "20%",
+              }
+            : {
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                minWidth: "20%",
+                flex: 1,
+              }
+        }
         container
         spacing={2}
       >
