@@ -30,6 +30,7 @@
 .logo_white {
   color: white;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .logo {

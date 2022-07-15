@@ -19,7 +19,12 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import { TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
+const ClientDetail = ({
+  clients,
+  setSelectedClient,
+  selectedClient,
+  setOpenModal,
+}) => {
   const [emailButton, setEmailButton] = useState(true);
   const [paymentButton, setPaymentButton] = useState(true);
   const [deleteButton, setDeleteButton] = useState(true);
@@ -76,15 +81,28 @@ const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
                   return (
                     <TableRow
                       key={`${client.lastName}_${client.firstName}`}
-                      sx={{
-                        cursor: "pointer",
-                        height: 70,
-                        "&:last-child td, &:last-child th": {
-                          border: 0,
-                          mb: 1,
-                        },
-                        "&:hover": { backgroundColor: "#dfdfdf" },
-                      }}
+                      sx={
+                        selectedClient.id === client.id
+                          ? {
+                              cursor: "pointer",
+                              height: 70,
+                              "&:last-child td, &:last-child th": {
+                                border: 0,
+                                mb: 1,
+                              },
+                              backgroundColor: "#dfdfdf",
+                              border: "1px solid gray",
+                            }
+                          : {
+                              cursor: "pointer",
+                              height: 70,
+                              "&:last-child td, &:last-child th": {
+                                border: 0,
+                                mb: 1,
+                              },
+                              "&:hover": { backgroundColor: "#dfdfdf" },
+                            }
+                      }
                       onClick={() => clickHandler(client)}
                     >
                       <TableCell component="th" scope="row">
@@ -119,7 +137,12 @@ const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
         }}
       >
         <ButtonGroup variant="contained" sx={{ height: "90%" }}>
-          <Button sx={{ width: 100 }}>
+          <Button
+            sx={{ width: 100 }}
+            onClick={() => {
+              setOpenModal(true);
+            }}
+          >
             <AddIcon />
           </Button>
           <Button disabled={emailButton} sx={{ width: 100 }}>

@@ -8,13 +8,15 @@ import History from "../components/staff/History";
 import Messages from "../components/staff/Messages";
 import PendingPayments from "../components/staff/PendingPayments";
 import { server } from "../config";
+import NewClientModal from "../components/staff/NewClientModal";
 
 const Staff = ({ clients }) => {
   const { data: session, status } = useSession();
   const [selectedClient, setSelectedClient] = useState({});
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    console.log(selectedClient);
+    // console.log(selectedClient);
   }, [selectedClient]);
 
   if (status === "loading") {
@@ -49,10 +51,12 @@ const Staff = ({ clients }) => {
               clients={clients}
               setSelectedClient={setSelectedClient}
               selectedClient={selectedClient}
+              setOpenModal={setOpenModal}
             />
             <PendingPayments />
           </Box>
         </Paper>
+        <NewClientModal openModal={openModal} setOpenModal={setOpenModal} />
       </div>
     );
   } else {

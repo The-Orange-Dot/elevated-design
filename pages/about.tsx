@@ -101,11 +101,11 @@ const About = () => {
             />
           </Paper>
         </Box>
-
-        <Box>
-          <Typography>Blah Blah Blah, more info down here</Typography>
-        </Box>
       </div>
+
+      {/* <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <Typography>Blah Blah Blah, more info down here</Typography>
+      </Box> */}
       {/* <Typography>Sharing is caring</Typography> */}
       {/* <Typography>Get some fresh air. You deserve it</Typography> */}
       <Footer />
