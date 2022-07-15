@@ -8,8 +8,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import Backdrop from "@mui/material/Backdrop";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
   const [pageLoaded, setPageLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -84,15 +86,21 @@ export default function Home() {
         </Typography>
         <Button
           variant="contained"
-          sx={{ borderRadius: "5rem", p: "10px 30px", m: 0.5 }}
+          sx={{ borderRadius: "5rem", p: "10px 30px", m: 0.5, zIndex: 1 }}
           className="button"
+          onClick={() => {
+            router.push("/contact");
+          }}
         >
           <Typography variant="button">Inquire</Typography>
         </Button>
         <Button
           variant="contained"
-          sx={{ borderRadius: "5rem", p: "10px 30px", m: 0.5 }}
+          sx={{ borderRadius: "5rem", p: "10px 30px", m: 0.5, zIndex: 1 }}
           className="button"
+          onClick={() => {
+            router.push("/gallery");
+          }}
         >
           <Typography variant="button">Gallery</Typography>
         </Button>
