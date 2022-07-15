@@ -22,6 +22,20 @@ const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
   const [emailButton, setEmailButton] = useState(true);
   const [paymentButton, setPaymentButton] = useState(true);
 
+  const clickHandler = (client: any) => {
+    setSelectedClient(client);
+  };
+
+  useEffect(() => {
+    if (selectedClient.id) {
+      setEmailButton(false);
+      setPaymentButton(false);
+    } else {
+      setEmailButton(true);
+      setPaymentButton(true);
+    }
+  }, [selectedClient]);
+
   return (
     <Paper sx={{ width: "99%", height: "60%", m: 1 }}>
       <TableContainer
@@ -67,7 +81,7 @@ const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
                         },
                         "&:hover": { backgroundColor: "#dfdfdf" },
                       }}
-                      onClick={() => setSelectedClient(client)}
+                      onClick={() => clickHandler(client)}
                     >
                       <TableCell component="th" scope="row">
                         {`${client.lastName

@@ -35,7 +35,12 @@ const Staff = ({ clients }) => {
             justifyContent: "space-around",
           }}
         >
-          <Box sx={{ width: "50%", height: "100%", m: 1 }}>
+          <Box
+            sx={{ width: "50%", height: "100%", m: 1 }}
+            onClick={() => {
+              setSelectedClient({});
+            }}
+          >
             <Messages />
             <History />
           </Box>
