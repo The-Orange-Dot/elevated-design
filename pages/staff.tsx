@@ -62,13 +62,17 @@ const Staff = ({ clients }) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`${server}/api/clients`);
-  const clients = await res.json();
-  return {
-    props: {
-      clients,
-    },
-  };
+  try {
+    const res = await fetch(`${server}/api/clients`);
+    const clients = await res.json();
+    return {
+      props: {
+        clients,
+      },
+    };
+  } catch {
+    return { notFound: true };
+  }
 }
 
 export default Staff;
