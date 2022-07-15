@@ -17,10 +17,12 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import AddIcon from "@mui/icons-material/Add";
 import PaymentIcon from "@mui/icons-material/Payment";
 import { TextField } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
   const [emailButton, setEmailButton] = useState(true);
   const [paymentButton, setPaymentButton] = useState(true);
+  const [deleteButton, setDeleteButton] = useState(true);
 
   const clickHandler = (client: any) => {
     setSelectedClient(client);
@@ -30,9 +32,11 @@ const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
     if (selectedClient.id) {
       setEmailButton(false);
       setPaymentButton(false);
+      setDeleteButton(false);
     } else {
       setEmailButton(true);
       setPaymentButton(true);
+      setDeleteButton(true);
     }
   }, [selectedClient]);
 
@@ -94,7 +98,7 @@ const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
                       </TableCell>
                       <TableCell align="center">{client.email}</TableCell>
                       <TableCell align="center">{client.phoneNumber}</TableCell>
-                      <TableCell align="right">{`${client.address}, ${client.zipcode}`}</TableCell>
+                      <TableCell align="right">{`${client.address}, ${client.city}, ${client.zipcode}`}</TableCell>
                     </TableRow>
                   );
                 })
@@ -123,6 +127,9 @@ const ClientDetail = ({ clients, setSelectedClient, selectedClient }) => {
           </Button>
           <Button disabled={paymentButton} sx={{ width: 100 }}>
             <PaymentIcon />
+          </Button>
+          <Button disabled={deleteButton} sx={{ width: 100 }} color="error">
+            <DeleteIcon />
           </Button>
         </ButtonGroup>
 
