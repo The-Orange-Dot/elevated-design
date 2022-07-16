@@ -20,7 +20,8 @@ import { TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const ClientDetail = ({
-  clients,
+  clientsData,
+  setClientsData,
   setSelectedClient,
   selectedClient,
   setOpenModal,
@@ -44,6 +45,24 @@ const ClientDetail = ({
       setDeleteButton(true);
     }
   }, [selectedClient]);
+
+  const deleteHandler = async () => {
+    const res = await fetch(`${server}/api/clients`, {
+      method: "DELETE",
+      body: JSON.stringify(selectedClient.id),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (res.status === 200) {
+      const resData = await res.json();
+      const updatedClients = clientsData.filter((client) => {
+        return client.id !== resData;
+      });
+
+      setClientsData(updatedClients);
+      setSelectedClient({});
+    }
+  };
 
   return (
     <Paper sx={{ width: "99%", height: "60%", m: 1 }}>
@@ -76,13 +95,13 @@ const ClientDetail = ({
             </TableRow>
           </TableHead>
           <TableBody sx={{ mt: 1, mb: 1 }}>
-            {clients.length
-              ? clients.map((client) => {
+            {clientsData.length
+              ? clientsData.map((client) => {
                   return (
                     <TableRow
-                      key={`${client.lastName}_${client.firstName}`}
+                      key={`${client?.lastName}_${client?.firstName}`}
                       sx={
-                        selectedClient.id === client.id
+                        selectedClient?.id === client?.id
                           ? {
                               cursor: "pointer",
                               height: 70,
@@ -106,17 +125,19 @@ const ClientDetail = ({
                       onClick={() => clickHandler(client)}
                     >
                       <TableCell component="th" scope="row">
-                        {`${client.lastName
+                        {`${client?.lastName
                           .slice(0, 1)
-                          .toUpperCase()}${client.lastName.slice(
+                          .toUpperCase()}${client?.lastName.slice(
                           1
-                        )}, ${client.firstName
+                        )}, ${client?.firstName
                           .slice(0, 1)
-                          .toUpperCase()}${client.firstName.slice(1)}`}
+                          .toUpperCase()}${client?.firstName.slice(1)}`}
                       </TableCell>
-                      <TableCell align="center">{client.email}</TableCell>
-                      <TableCell align="center">{client.phoneNumber}</TableCell>
-                      <TableCell align="right">{`${client.address}, ${client.city}, ${client.zipcode}`}</TableCell>
+                      <TableCell align="center">{client?.email}</TableCell>
+                      <TableCell align="center">
+                        {client?.phoneNumber}
+                      </TableCell>
+                      <TableCell align="right">{`${client?.address}, ${client?.city}, ${client?.zipcode}`}</TableCell>
                     </TableRow>
                   );
                 })
@@ -151,7 +172,14 @@ const ClientDetail = ({
           <Button disabled={paymentButton} sx={{ width: 100 }}>
             <PaymentIcon />
           </Button>
-          <Button disabled={deleteButton} sx={{ width: 100 }} color="error">
+          <Button
+            disabled={deleteButton}
+            sx={{ width: 100 }}
+            color="error"
+            onClick={() => {
+              deleteHandler();
+            }}
+          >
             <DeleteIcon />
           </Button>
         </ButtonGroup>

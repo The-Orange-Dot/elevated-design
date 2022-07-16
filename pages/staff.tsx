@@ -14,10 +14,9 @@ const Staff = ({ clients }) => {
   const { data: session, status } = useSession();
   const [selectedClient, setSelectedClient] = useState({});
   const [openModal, setOpenModal] = useState(false);
+  const [clientsData, setClientsData] = useState(clients);
 
-  useEffect(() => {
-    // console.log(selectedClient);
-  }, [selectedClient]);
+  useEffect(() => {}, [clientsData]);
 
   if (status === "loading") {
     return <div>Checking credentials</div>;
@@ -48,7 +47,8 @@ const Staff = ({ clients }) => {
           </Box>
           <Box sx={{ width: "50%", height: "100%", m: 1 }}>
             <ClientDetail
-              clients={clients}
+              clientsData={clientsData}
+              setClientsData={setClientsData}
               setSelectedClient={setSelectedClient}
               selectedClient={selectedClient}
               setOpenModal={setOpenModal}
@@ -56,7 +56,12 @@ const Staff = ({ clients }) => {
             <PendingPayments />
           </Box>
         </Paper>
-        <NewClientModal openModal={openModal} setOpenModal={setOpenModal} />
+        <NewClientModal
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          clientsData={clientsData}
+          setClientsData={setClientsData}
+        />
       </div>
     );
   } else {
