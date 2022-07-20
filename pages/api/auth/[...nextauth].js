@@ -48,8 +48,7 @@ export default NextAuth({
     },
     async session({ session, token }) {
       session.user = {
-        firstName: token.user.firstName,
-        lastName: token.user.lastName,
+        name: `${token.user.firstName} ${token.user.lastName}`,
         email: token.user.email,
         address: token.user.address,
         phoneNumber: token.user.phoneNumber,

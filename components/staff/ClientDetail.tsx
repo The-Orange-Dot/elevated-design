@@ -6,18 +6,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/staff/ClientDetail.module.css";
 import { server } from "../../config/index";
 import HomeIcon from "@mui/icons-material/Home";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import AddIcon from "@mui/icons-material/Add";
-import PaymentIcon from "@mui/icons-material/Payment";
 import { TextField } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import ClientDetailButtons from "./ClientDetailButtons";
 
 const ClientDetail = ({
   clientsData,
@@ -25,6 +20,7 @@ const ClientDetail = ({
   setSelectedClient,
   selectedClient,
   setOpenModal,
+  setOpenInvoiceModal,
 }) => {
   const [emailButton, setEmailButton] = useState(true);
   const [paymentButton, setPaymentButton] = useState(true);
@@ -45,6 +41,8 @@ const ClientDetail = ({
       setDeleteButton(true);
     }
   }, [selectedClient]);
+
+  const invoiceHandler = () => {};
 
   const deleteHandler = async () => {
     const res = await fetch(`${server}/api/clients`, {
@@ -157,34 +155,15 @@ const ClientDetail = ({
           alignItems: "center",
         }}
       >
-        <ButtonGroup variant="contained" sx={{ height: "90%" }}>
-          <Button
-            sx={{ width: 100 }}
-            onClick={() => {
-              setOpenModal(true);
-            }}
-          >
-            <AddIcon />
-          </Button>
-          <Button disabled={emailButton} sx={{ width: 100 }}>
-            <EmailIcon />
-          </Button>
-          <Button disabled={paymentButton} sx={{ width: 100 }}>
-            <PaymentIcon />
-          </Button>
-          <Button
-            disabled={deleteButton}
-            sx={{ width: 100 }}
-            color="error"
-            onClick={() => {
-              deleteHandler();
-            }}
-          >
-            <DeleteIcon />
-          </Button>
-        </ButtonGroup>
-
-        <TextField size="small" label="Search" />
+        <ClientDetailButtons
+          setOpenModal={setOpenModal}
+          setOpenInvoiceModal={setOpenInvoiceModal}
+          deleteHandler={deleteHandler}
+          invoiceHandler={invoiceHandler}
+          emailButton={emailButton}
+          paymentButton={paymentButton}
+          deleteButton={deleteButton}
+        />
       </Paper>
     </Paper>
   );

@@ -8,3 +8,9 @@
   width: 100%;
   max-width: 1500px;
 }
+
+.logo {
+  font-weight: 400;
+  color: black;
+  cursor: pointer;
+}

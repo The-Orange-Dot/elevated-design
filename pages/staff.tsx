@@ -9,24 +9,44 @@ import Messages from "../components/staff/Messages";
 import PendingPayments from "../components/staff/PendingPayments";
 import { server } from "../config";
 import NewClientModal from "../components/staff/NewClientModal";
+import InvoiceModal from "../components/staff/InvoiceModal";
 
 const Staff = ({ clients }) => {
   const { data: session, status } = useSession();
   const [selectedClient, setSelectedClient] = useState({});
   const [openModal, setOpenModal] = useState(false);
   const [clientsData, setClientsData] = useState(clients);
+  const [openInvoiceModal, setOpenInvoiceModal] = useState(false);
+  const [user, setUser] = useState("");
 
-  useEffect(() => {}, [clientsData]);
+  useEffect(() => {
+    const user = `${session?.user.name.slice(0, 1).toUpperCase()}${
+      session?.user.name.slice(1).split(" ")[0]
+    }`;
+    setUser(user);
+    if (user !== "") {
+      console.log(`Successfully logged in as ${session?.user.name}`);
+    }
+  }, [session]);
 
   if (status === "loading") {
     return <div>Checking credentials</div>;
   } else if (status === "authenticated") {
     return (
       <div className={styles.container}>
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
           <Typography className={styles.logo} variant="h5">
             Elevated Design
           </Typography>
+
+          <Typography>Hey, {user}!</Typography>
         </Box>
         <Paper
           sx={{
@@ -52,8 +72,9 @@ const Staff = ({ clients }) => {
               setSelectedClient={setSelectedClient}
               selectedClient={selectedClient}
               setOpenModal={setOpenModal}
+              setOpenInvoiceModal={setOpenInvoiceModal}
             />
-            <PendingPayments />
+            <PendingPayments setSelectedClient={setSelectedClient} />
           </Box>
         </Paper>
         <NewClientModal
@@ -61,6 +82,10 @@ const Staff = ({ clients }) => {
           setOpenModal={setOpenModal}
           clientsData={clientsData}
           setClientsData={setClientsData}
+        />
+        <InvoiceModal
+          openInvoiceModal={openInvoiceModal}
+          setOpenInvoiceModal={setOpenInvoiceModal}
         />
       </div>
     );
